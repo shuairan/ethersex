@@ -7,12 +7,12 @@ import cgitb
 cgitb.enable()
 
 cache_dir = '.cache'
-default_host = 'heizung'
-hosts = {'heizung': {	'addr': '192.168.100.13',
-						'port': 2701,
+default_host = 'fifi2'
+hosts = {'fifi2': {	'addr': '192.168.2.134',
+						'port': 23,
 						'kty get': 40,
 						'help' : 30,
-						'whitelist': ['kty get'],
+						'whitelist': ['kty get','whm','date','ip','help'],
 						'default_cache': 30}}
 
 class EcmdHandler:
@@ -89,7 +89,7 @@ class EcmdHandler:
 
 # setup environ
 
-print("Content-Type: text/plain")
+print("Content-Type: text/html")
 print("Cache-Control: no-cache")
 print("")
 

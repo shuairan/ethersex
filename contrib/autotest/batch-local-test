@@ -36,10 +36,18 @@ if [ x"$1" != x"" ]; then
   done
 
 else
+  GIT_VER=`git show --abbrev-commit --pretty=oneline | sed -n '1 {s/ .*//p}' | tr -d '\n'`
+  echo "$0 at `date` using ethersex revision: $GIT_VER" >> batch-local-test.log
   for A in contrib/autotest/profiles/* scripts/profiles/*; do
-    echo "Trying to compile Ethersex firmware using profile '$A' ..."
+    echo ".Trying to compile Ethersex firmware using profile '$A' ..."
+    rm -rf "ethersex.bin"
+    RET="FAIL"
     ./contrib/autotest/run "$A" > /dev/null
     [ -e "ethersex.bin" ] && ls -l ethersex.bin
+    [ -e "ethersex.bin" ] && RET="success with $(stat -c%s 'ethersex.bin') bytes"
+    echo "Compile of $A: $RET" >> batch-local-test.log
     echo ""
   done
+  echo "" >> batch-local-test.log
+  echo "see resultlist in batch-local-test.log"
 fi
