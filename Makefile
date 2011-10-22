@@ -109,6 +109,7 @@ SUBDIRS += services/curtain
 SUBDIRS += services/glcdmenu
 SUBDIRS += services/lome6
 SUBDIRS += services/projectors/sanyoZ700
+SUBDIRS += protocols/ws2801
 
 rootbuild=t
 
