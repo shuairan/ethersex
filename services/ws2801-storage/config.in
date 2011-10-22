@@ -1,0 +1,9 @@
+dep_bool_menu "WS2801 Storage (EXPERIMENTAL)" WS2801_STORAGE_SUPPORT $ARCH_AVR $CONFIG_EXPERIMENTAL
+	int "Universes" WS2801_STORAGE_UNIVERSES 2
+	int "LEDs to store" WS2801_STORAGE_LEDS 64
+	int "Slots per Universe" WS2801_STORAGE_SLOTS 5
+	comment "---- Mapping ----"
+	
+	comment "---- Debug ----"
+	bool "Debug" WS2801_STORAGE_DEBUG
+endmenu

@@ -1,9 +1,10 @@
 /*
- * Copyright (c) 2009 by Dirk Pannenbecker <dp@sd-gp.de>
+ *
+ * Copyright (c) 2011 by Maximilian Güntner <maximilian.guentner@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
+ * as published by the Free Software Foundation; either version 3
  * of the License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -18,18 +19,26 @@
  * For more information on the GPL, please go to:
  * http://www.gnu.org/copyleft/gpl.html
  */
-
 #include "config.h"
+#include <stdlib.h>
 
-// the arrays of int32s that hold each LED's 24 bit color values
-uint32_t *pixels;
-uint16_t numLEDs;
-//uint8_t dataPin, clockPin;
+#ifdef WS2801_EFFECT_SUPPORT
+
+#define WS2801_EFFECT_DISABLED 0
+#define WS2801_EFFECT_ENABLED 1
+
+#ifdef WS2801_EFFECT_RAINBOW
 extern uint8_t rainbow_enabled;
 
-void ws2801_init(void);
-//void ws2801_begin();
-void ws2801_show();
-void ws2801_setPixelColor(uint16_t n, uint8_t r, uint8_t g, uint8_t b);
-void ws2801_setPixel(uint16_t n, uint32_t c);
-uint16_t numPixels(void);
+void WS2801_effect_rainbow_colors(void);
+#endif
+#ifdef WS2801_EFFECT_RANDOM
+extern uint8_t random_enabled;
+void WS2801_effecT_random_colors_gen(void);
+void WS2801_effecT_random_colors_show(void);
+#endif
+
+void WS2801_effect_init(void);
+void WS2801_effect_process(void);
+
+#endif

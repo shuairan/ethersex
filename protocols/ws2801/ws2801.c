@@ -92,10 +92,16 @@ void ws2801_setPixelColor(uint16_t n, uint8_t r, uint8_t g, uint8_t b) {
   pixels[n] = data;
 }
 
-void ws2801_setPixelColor(uint16_t n, uint32_t c) {
+void ws2801_setPixel(uint16_t n, uint32_t c) {
   if (n > numLEDs) return;
 
   pixels[n] = c & 0xFFFFFF;
+}
+
+uint32_t ws2801_getPixel(uint16_t n) {
+  if (n > numLEDs) return;
+
+  return pixels[n];
 }
 
 
