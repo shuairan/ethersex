@@ -25,11 +25,12 @@
 uint32_t *pixels;
 uint16_t numLEDs;
 //uint8_t dataPin, clockPin;
+extern uint8_t rainbow_enabled;
 
-void ws2801_init(uint16_t n, uint8_t dpin, uint8_t cpin);
+void ws2801_init(void);
 //void ws2801_begin();
 void ws2801_show();
 void ws2801_setPixelColor(uint16_t n, uint8_t r, uint8_t g, uint8_t b);
-//void ws2801_setPixelColorsetPixelColor(uint16_t n, uint32_t c);
-//uint16_t numPixels(void);
+void ws2801_setPixelColor(uint16_t n, uint32_t c);
+uint16_t numPixels(void);
 
