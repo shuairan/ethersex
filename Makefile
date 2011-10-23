@@ -110,6 +110,7 @@ SUBDIRS += services/glcdmenu
 SUBDIRS += services/lome6
 SUBDIRS += services/projectors/sanyoZ700
 SUBDIRS += protocols/ws2801
+SUBDIRS += services/ws2801-effect
 
 rootbuild=t
 

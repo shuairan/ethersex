@@ -55,6 +55,8 @@ int16_t parse_cmd_ws2801_rainbow(char *cmd, char *output, uint16_t len)
 
 }
 #endif /*Rainbow*/
+
+
 #ifdef WS2801_EFFECT_RANDOM
 int16_t parse_cmd_ws2801_random(char *cmd, char *output, uint16_t len)
 {
@@ -84,6 +86,8 @@ int16_t parse_cmd_ws2801_random(char *cmd, char *output, uint16_t len)
 #endif /*Random*/
 
 #endif
+
+     
 /*
    -- Ethersex META --
    block([[WS2801_Effect]] commands)
@@ -94,4 +98,3 @@ int16_t parse_cmd_ws2801_random(char *cmd, char *output, uint16_t len)
 	ecmd_feature(ws2801_random, "ws2801 random",, switch random on (1) or off (0)) 
    ecmd_endif
 */
-     

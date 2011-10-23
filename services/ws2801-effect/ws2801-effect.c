@@ -45,7 +45,7 @@ void ws2801_effect_rainbow_colors(void)
 	rainbow_delay = 0;
 	switch(rainbow_step) {
 		case 0:
-			if (color_g > 1) {a
+			if (color_g > 1) {
 				color_g--;
 				color_b++;
 			} else {
@@ -71,7 +71,7 @@ void ws2801_effect_rainbow_colors(void)
 	}
 
 	/*Copy colors to ws2801 storage*/
-    for(uint16_t i=0;i<WS2801_EFFECT_RAINBOW_PIXELS);i++)
+    for(uint16_t i=0;i<WS2801_EFFECT_RAINBOW_PIXELS;i++)
 	{
         ws2801_setPixelColor(WS2801_EFFECT_RAINBOW_OFFSET+i, color_b, color_g, color_r);
     }

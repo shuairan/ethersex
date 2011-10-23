@@ -3,13 +3,13 @@ dep_bool_menu "WS2801 Effects and Animations (EXPERIMENTAL)" WS2801_EFFECT_SUPPO
 	bool "Rainbow Colors" WS2801_EFFECT_RAINBOW
 		 
 	if [ "$WS2801_EFFECT_RAINBOW" = "y" ]; then
-		int "Active LEDs" WS2801_EFFECT_RAINBOW_LEDS 16
+		int "Active LEDs" WS2801_EFFECT_RAINBOW_PIXELS 16
         int "Offset" WS2801_EFFECT_RAINBOW_OFFSET 0
 	fi
 	comment " ------ "
 	bool "Random Colors" WS2801_EFFECT_RANDOM
 	if [ "$WS2801_EFFECT_RANDOM" = "y" ]; then
-		int "Active LEDs" WS2801_EFFECT_RANDOM_LEDS 16
+		int "Active LEDs" WS2801_EFFECT_RANDOM_PIXELS 16
 		int "Offset" WS2801_EFFECT_RANDOM_OFFSET 0
 		bool "Random value for each channel" WS2801_EFFECT_RANDOM_ALL y
 	fi
