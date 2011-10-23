@@ -25,8 +25,8 @@
 #include <avr/pgmspace.h>
 #include <stdlib.h>
 #include "core/debug.h"
+#include "protocols/ws2801/ws2801.h"
 #include "ws2801-effect.h"
-//#include "services/ws2801-storage/ws2801_storage.h"
 
 #ifdef WS2801_EFFECT_SUPPORT
 
@@ -45,7 +45,7 @@ void ws2801_effect_rainbow_colors(void)
 	rainbow_delay = 0;
 	switch(rainbow_step) {
 		case 0:
-			if (color_g > 1) {
+			if (color_g > 1) {a
 				color_g--;
 				color_b++;
 			} else {
@@ -150,6 +150,7 @@ void ws2801_effect_random_colors_show()
 	}
 }
 #endif /*Random end*/
+
 void ws2801_effect_init()
 {
 #ifdef WS2801_EFFECT_RAINBOW

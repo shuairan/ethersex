@@ -32,4 +32,5 @@ void ws2801_init(void);
 void ws2801_show();
 void ws2801_setPixelColor(uint16_t n, uint8_t r, uint8_t g, uint8_t b);
 void ws2801_setPixel(uint16_t n, uint32_t c);
-uint16_t numPixels(void);
+uint16_t ws2801_numPixels(void);
+uint32_t ws2801_getPixel(uint16_t n);

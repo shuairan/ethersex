@@ -27,27 +27,27 @@
 #include "protocols/ws2801/ws2801.h"
 #include "protocols/ecmd/ecmd-base.h"
 
-int16_t ws2801_get_pixel(char *cmd, char *output, uint16_t len)
+int16_t parse_cmd_ws2801_get_pixel(char *cmd, char *output, uint16_t len)
 {
-	uint16_t ret=0, led=0;
+	uint16_t ret=0, pixel=0;
 	if (cmd[0]!=0) ret = sscanf_P(cmd, PSTR("%u"), &pixel);
 	if(ret == 1)
 	{
 		if (pixel >= WS2801_PIXEL_NUM)
 			return ECMD_ERR_PARSE_ERROR;
-		itoa(get_ws2801_pixel(pixel), output, 10);
+		itoa(ws2801_getPixel(pixel), output, 10);
 		return ECMD_FINAL(strlen(output));
 	}
 	else
 		return ECMD_ERR_PARSE_ERROR;
 }
 
-int16_t parse_cmd_dmx_set_pixels(char *cmd, char *output, uint16_t len)
+int16_t parse_cmd_ws2801_set_pixels(char *cmd, char *output, uint16_t len)
 {
     uint16_t startpixel=0, value=0, pixelcounter=0, i=3;
     if (cmd[0]!=0) {
         sscanf_P(cmd, PSTR("%u"), &startpixel);
-        if (startchannel >= WS2801_PIXEL_NUM)
+        if (startpixel >= WS2801_PIXEL_NUM)
             return ECMD_ERR_PARSE_ERROR;
         
         while (cmd[i]!=0){           //read and write all values
@@ -70,36 +70,7 @@ int16_t parse_cmd_dmx_set_pixels(char *cmd, char *output, uint16_t len)
 
 }
 
-int16_t parse_cmd_dmx_set_pixels(char *cmd, char *output, uint16_t len)
-{
-    /*
-	uint16_t startchannel=0, universe=0, value=0, channelcounter=0, i=4;
-	if (cmd[0]!=0) {
-		sscanf_P(cmd, PSTR("%u %u"), &universe,&startchannel);
-		if (startchannel >= DMX_STORAGE_CHANNELS)
-			return ECMD_ERR_PARSE_ERROR;
-		if (universe >= DMX_STORAGE_UNIVERSES)
-			return ECMD_ERR_PARSE_ERROR;
-
-		while (cmd[i]!=0){           //read and write all values
-			sscanf_P(cmd+i, PSTR(" %u"),&value);
-			if(set_dmx_channel(universe,startchannel+channelcounter,value))
-				return ECMD_ERR_WRITE_ERROR;
-			channelcounter++;
-			do{                         //search for next space
-				i++;
-				if(cmd[i]==0) break;
-			}while(cmd[i]!=' ');
-		}
-
-		return ECMD_FINAL_OK;
-	}
-	else
-		return ECMD_ERR_PARSE_ERROR;
-    */
-}
-
-int16_t parse_cmd_w2801_nums(char *cmd, char *output, uint16_t len)
+int16_t parse_cmd_ws2801_get_nums(char *cmd, char *output, uint16_t len)
 {
 	itoa(WS2801_PIXEL_NUM, output, 10);
 	return ECMD_FINAL(strlen(output));
@@ -109,6 +80,6 @@ int16_t parse_cmd_w2801_nums(char *cmd, char *output, uint16_t len)
    -- Ethersex META --
    block([[WS2801]] commands)
    ecmd_feature(ws2801_get_pixel, "ws2801 get",, Return pixel value) 
-   ecmd_feature(ws2801_set_pixels, "ws2801 pixels",, Set pixel(s) values) 
+   ecmd_feature(ws2801_set_pixels, "ws2801 set",, Set pixel(s) values) 
    ecmd_feature(ws2801_get_nums, "ws2801 nums",, How many pixels) 
  */
